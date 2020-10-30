@@ -1,13 +1,9 @@
-/**
- * 
- */
 package it.unibo.oop.lab.collections2;
 
 import java.util.Collection;
 import java.util.List;
 
 /**
- * 
  * Represents the user of a social network. A user follows other users and of
  * course can be followed as well.
  * 
