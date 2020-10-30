@@ -4,6 +4,8 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.junit.Test;
 
 /**
@@ -19,8 +21,15 @@ public class TestWithExceptions {
     @Test
     public void testExceptionNotExpected() {
         try {
-            Class.forName("java.util.ArrayList").newInstance();
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            Class.forName("java.util.ArrayList").getConstructor().newInstance();
+        } catch (
+            ClassNotFoundException
+            | InstantiationException
+            | IllegalAccessException
+            | InvocationTargetException
+            | NoSuchMethodException
+            | SecurityException e
+        ) {
             /*
              * Same behavior for any exception: use multi-catch.
              * 
@@ -35,16 +44,26 @@ public class TestWithExceptions {
     /**
      * This is a test where we do expect an exception to be raised. If not, the
      * test must fail.
+     * @throws SecurityException 
+     * @throws ClassNotFoundException 
+     * @throws InvocationTargetException 
+     * @throws IllegalArgumentException 
+     * @throws IllegalAccessException 
+     * @throws InstantiationException 
      */
     @Test
-    public void testExceptionExpected() {
+    public void testExceptionExpected()
+            throws InstantiationException,
+            IllegalAccessException,
+            InvocationTargetException,
+            ClassNotFoundException {
         try {
-            Class.forName("java.util.List").newInstance();
+            Class.forName("java.util.List").getConstructor().newInstance();
             /*
              * If we get to the next line, then we have not generated any exception. The test must fail().
              */
             fail();
-        } catch (InstantiationException e) {
+        } catch (NoSuchMethodException e) {
             /*
              * We expect this exception, and none other (List must exist in the
              * classpath, but it can't be instanced being an interface.
@@ -60,13 +79,6 @@ public class TestWithExceptions {
              */
             assertNotNull(e.getMessage());
             assertFalse(e.getMessage().isEmpty());
-        } catch (ClassNotFoundException | IllegalAccessException e) {
-            /*
-             * These are theorethically possible, but not expected exceptions.
-             * To deal with them, we use a second catch block, and we raise an
-             * explicit fail.
-             */
-            fail(e.getMessage());
         }
     }
 }
