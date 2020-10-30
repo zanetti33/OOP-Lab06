@@ -1,9 +1,9 @@
 # Si svolgano i punti descritti di seguito. Se l'esercizio non viene completato entro 20 minuti, si passi agli esercizi in Java.
 
-* Si acceda a [Bitbucket](https://bitbucket.org/)
-* Ci si logghi con il proprio utente
-* Si vada al [progetto di test](https://bitbucket.org/danysk/courses-oop-git-merge-conflict-test)
-* Dall'interfaccia web di Bitbucket, si crei una propria fork del progetto
+* Si acceda a [GitHub](https://github.com/)
+* Si effettui l'accesso con il proprio utente
+* Si vada al [progetto di test](https://github.com/APICe-at-DISI/OOP-git-merge-conflict-test)
+* Dall'interfaccia web di GitHub, si crei una propria fork del progetto
 * Utilizzando il comando ``git clone`` appropriatamente, si cloni **la propria fork del progetto** all'interno di una nuova directory
 * Si verifichi di aver clonato correttamente con `git status`
 * Utilizzando il comando `git branch -a`, si verifichi quanti branch remoti abbia il repository.
@@ -14,7 +14,7 @@
 * Si utilizzi `git log --graph --all` per capire esattamente come sia strutturato il repository
 * Si tenti di fare il merge del branch `feature` dentro il branch `master`, utilizzando in modo idoneo il sottocomando `merge`
 * Si genera un conflitto di merge!
-* Si utilizzi git status per capire quali file confliggono. Si noti come il suddetto comando espliciti che il problema è derivante dal fatto che `both modified`.
+* Si utilizzi `git status` per capire quali file confliggono. Si noti come il suddetto comando espliciti che il problema è derivante dal fatto che `both modified`.
 * Si apra il file che fa conflitto, e lo si modifichi perché stampi sia le informazioni circa l'autore che quelle riguardanti il numero di processori logici installati sulla macchina.
 * Si verifichi che il file sia stato modificato correttamente compilandolo ed eseguendolo (usando `javac` e `java` da terminale)
 * Si aggiunga la versione modificata e con il conflitto risolto del file al tracker, usando correttamente il sottocomando `add`
