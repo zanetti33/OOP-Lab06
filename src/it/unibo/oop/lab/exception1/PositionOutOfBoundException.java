@@ -7,10 +7,7 @@ package it.unibo.oop.lab.exception1;
  */
 public class PositionOutOfBoundException extends IllegalStateException {
 
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 5322262957171100503L;
+    private static final long serialVersionUID = 1L;
     private final int x;
     private final int y;
 
