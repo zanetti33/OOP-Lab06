@@ -29,7 +29,7 @@ public class SocialNetworkUserImpl<U extends User> extends UserImpl implements S
      * 
      * think of what type of keys and values would best suit the requirements
      */
-
+    private final map<U, String> followed;
     /*
      * [CONSTRUCTORS]
      * 
@@ -40,7 +40,9 @@ public class SocialNetworkUserImpl<U extends User> extends UserImpl implements S
      * 
      * 2) Define a further constructor where age is defaulted to -1
      */
-
+    public SocialNetworkUserImpl(final String name, final String surname, final String user) {
+        super(name, surname, user);
+    }
     /**
      * Builds a new {@link SocialNetworkUserImpl}.
      * 
@@ -66,17 +68,17 @@ public class SocialNetworkUserImpl<U extends User> extends UserImpl implements S
 
     @Override
     public boolean addFollowedUser(final String circle, final U user) {
-        return false;
+        return this.followed.add(user, circle);
     }
 
     @Override
     public Collection<U> getFollowedUsersInGroup(final String groupName) {
-        return null;
+        
     }
 
     @Override
     public List<U> getFollowedUsers() {
-        return null;
+        return this.followed.getKeys();
     }
 
 }
